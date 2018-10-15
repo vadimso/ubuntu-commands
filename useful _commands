@@ -1,0 +1,2 @@
+
+dpkg --list | grep linux-image # list all installed kernel
