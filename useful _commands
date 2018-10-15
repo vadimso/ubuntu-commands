@@ -1,2 +1,6 @@
 
 dpkg --list | grep linux-image # list all installed kernel
+
+# remove unused kernel version
+dpkg -l | grep linux-image | grep -v 4.4.0-97 | grep -v 137 | awk '{ print $2 }' | tr '\n' ',' | awk '{ print "dpkg --purge "$1 }' | tr ',' ' ' | sh
+
