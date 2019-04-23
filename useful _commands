@@ -4,3 +4,11 @@ dpkg --list | grep linux-image
 # remove unused kernel version
 dpkg -l | grep linux-image | grep -v 4.4.0-97 | grep -v 137 | awk '{ print $2 }' | tr '\n' ',' | awk '{ print "dpkg --purge "$1 }' | tr ',' ' ' | sh
 
+# check if you are in chroot environment
+ischroot;echo $?
+
+#Exit codes:
+
+#0 if currently running in a chroot
+#1 if currently not running in a chroot
+#2 if the detection is not possible (On GNU/Linux this happens if the script is not run as root
