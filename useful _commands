@@ -10,12 +10,14 @@ sudo apt-mark hold PACKAGE
 apt-mark showhold
 #remove a hold (so the package can be updated) 
 sudo apt-mark unhold PACKAGE
+
 #prevent a package from upgrades using dpkg, use
 echo "PACKAGE hold" | sudo dpkg --set-selections
 #see all package holds using this command
 dpkg --get-selections | grep hold
 #To remove the hold (allow the package to be upgraded), use
 echo "PACKAGE install" | sudo dpkg --set-selections
+
 # check if you are in chroot environment
 ischroot;echo $?
 
